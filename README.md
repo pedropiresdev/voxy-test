@@ -23,6 +23,8 @@ ___
    $ Python manage.py runserver
    ``` 
 4) Visit http://127.0.0.1:8000/counter/ with your web browser.
+<img width="1512" alt="words_counter" src="https://user-images.githubusercontent.com/88399737/178083126-0c618d9b-c4c7-4db1-a52b-43bf24ab26b9.png">
+
 
 5) Type or paste any text and press Run counter
 
