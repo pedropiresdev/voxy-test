@@ -1,0 +1,35 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+<div class="mb-2" style="border-style: groove;border-radius: 10px;">
+  <div class="card-header" style="background-color: #6c757d">
+    {% if not error %}
+      <p class="m-0" style="font-size: 20px; color: #e9ecef">{{word}} words in your text!</p>
+    {% else %}
+      <p class="m-0" style="font-size: 20px; color: #e9ecef">{{error}}</p>
+    {% endif %}
+
+  </div>
+</div>
+
+
+<div class="col-12 pb-3" style="background-color:  #055160; color: #f8f9fa; border: 2px; border-style: groove; border-radius: 10px;">
+  <form action="../counter/" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    {% bootstrap_field field layout='horizontal' %}
+    {% endfor %}
+    <div class="form-group">
+      <label for="text1" style="margin: 10px">Text-box word's counter</label>
+      <textarea class="form-control" placeholder="Hello! Paste you're text here to count words."
+                name="texttocount" id="text1" rows="8" style="background-color: #f0f5f5;">{{text}}</textarea>
+    </div>
+
+    <!-- ads section end -->
+    <div class="form-group text-center">
+      {% buttons %}<button type="submit" class="btn btn-primary w-25" style="margin: 10px" >Run counter</button>{% endbuttons %}
+    </div>
+  </form>
+</div>
