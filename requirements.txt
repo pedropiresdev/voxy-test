@@ -1,6 +1,9 @@
-asgiref==3.5.2
-beautifulsoup4==4.11.1
-Django==4.0.6
-django-bootstrap-v5==1.0.11
-soupsieve==2.3.2.post1
-sqlparse==0.4.2
+requests==2.26.0
+fastapi==0.70.0
+uvicorn==0.15.0
+python-dotenv==0.19.1
+aiofiles==0.7.0
+python-multipart==0.0.5
+jinja2==3.0.2
+Markdown==3.3.4
+pytest==6.2.5

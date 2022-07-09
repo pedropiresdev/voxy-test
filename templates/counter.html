@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% set active_page = "counter" %}
+
+{% block title %}Words counter{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+
+{% endblock %}
+
+{% block page_content %}
+<h1 class="cap">Words counter</h1>
+{% if message %}
+{{ message }}
+{% endif %}
+
+<h6>An easy way to counter your text's words</h6>
+<p></p>
+<form>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="count-words" value="option1" checked>
+      <label class="form-check-label" for="count-words">Count words</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="count-characters" value="option2">
+      <label class="form-check-label" for="count-characters">Count characters</label>
+    </div>
+</form>
+
+<form action="/words-counter" method="post">
+    <div>
+        {% if not is_valid %}
+        <textarea class="form-control is-invalid" name="words" rows="3" required></textarea>
+        {% else %}
+        <textarea class="form-control is-valid" name="words" rows="3" required></textarea>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary btn-lg" value="Submit" data-toggle="button" aria-pressed="false" autocomplete="off">Run counter</button>
+        <div class="invalid-feedback">
+          Please enter a message in the text area.
+        </div>
+    </div>
+</form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+{% if text %}
+<h3 class="result">The number of words in your text is {{result}}.</h3>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}
